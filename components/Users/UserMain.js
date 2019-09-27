@@ -99,7 +99,7 @@ export default class UserMain extends Component {
             isLoadingNow: true
         })
 
-        var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/loginWithToken';
+        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/loginWithToken';
 
         fetch(url, {
             method: 'POST',
@@ -120,7 +120,7 @@ export default class UserMain extends Component {
                 DefaultPreference.set(CommonConf.PREF_KEY_LOGIN_TOKEN, "")
                     .then(function () {
                         console.log('login token saved.')
-                        
+
                     })
 
                 this.setState({
@@ -163,7 +163,7 @@ export default class UserMain extends Component {
                 isLoadingNow: true
             })
 
-            var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/login';
+            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/login';
 
             fetch(url, {
                 method: 'POST',
@@ -213,7 +213,7 @@ export default class UserMain extends Component {
                     }
                     // Alert.alert(json.login_token);
 
-                    
+
                 }
             }).catch(error => {
                 Alert.alert("서버 통신 상태가 원활하지 않습니다. 잠시 후 다시 시도해 주세요.");

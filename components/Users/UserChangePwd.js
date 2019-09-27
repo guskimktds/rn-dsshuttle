@@ -59,7 +59,7 @@ export default class UserChangePwd extends Component {
 
         const { loginToken } = this.state;
 
-        var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/myInfo';
+        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/myInfo';
 
         this.setState({
             isLoadingNow: true
@@ -181,12 +181,12 @@ export default class UserChangePwd extends Component {
         let isValid = this._checkValidInputValues(originPw, pw, pw2);
 
         if(isValid) {
-            var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/changePwd';
+            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/changePwd';
 
             this.setState({
                 isLoadingNow: true
             })
-    
+
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -200,13 +200,13 @@ export default class UserChangePwd extends Component {
                 }),
             }).then(response => response.json()).then(json => {
                 console.log(json);
-    
+
                 this.setState({
                     isLoadingNow: false
                 })
-    
+
                 if (json.resCode == 200) {  // 정상
-    
+
                     Alert.alert(
                         '비밀번호 변경',
                         '비밀번호 변경이 완료되었습니다.',

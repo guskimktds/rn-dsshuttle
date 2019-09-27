@@ -69,7 +69,7 @@ export default class UserResetPwd extends Component {
         let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         if (id && email) {
 
-            if (email.match(regExp) == null) {  //이메일 정규식 체크 
+            if (email.match(regExp) == null) {  //이메일 정규식 체크
                 this._showInputTextErrorMsg('invalidEmail');
                 return false;
             }
@@ -96,7 +96,7 @@ export default class UserResetPwd extends Component {
         let isValid = this._checkValidInputValues(id, email);
 
         if (isValid) {
-            var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/resetPwd';
+            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/resetPwd';
 
             this.setState({
                 isLoadingNow: true

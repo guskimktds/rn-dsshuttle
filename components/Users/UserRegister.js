@@ -50,7 +50,7 @@ export default class UserRegister extends Component {
         const { id } = this.state;
 
         if (id) {
-            var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/checkUserDupl';
+            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/checkUserDupl';
             this.setState({
                 isLoadingNow: true
             })
@@ -145,7 +145,7 @@ export default class UserRegister extends Component {
 
     _checkValidInputValues = (id, pw, pw2, email,phone,name, isNotDuplId) => {
         let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        if (!isNotDuplId) {  // 
+        if (!isNotDuplId) {  //
             this._showInputTextErrorMsg('notCheckDupl');
             return false;
         }
@@ -156,7 +156,7 @@ export default class UserRegister extends Component {
                     return false;
                 }
 
-                if (email.match(regExp) == null) {  //이메일 정규식 체크 
+                if (email.match(regExp) == null) {  //이메일 정규식 체크
                     this._showInputTextErrorMsg('invalidEmail');
                     return false;
                 }
@@ -200,7 +200,7 @@ export default class UserRegister extends Component {
         let isValid = this._checkValidInputValues(id, pw, pw2, email, phone,name, isNotDuplId);
 
         if (isValid) {
-            var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/regiUser';
+            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/regiUser';
 
             this.setState({
                 isLoadingNow: true
@@ -283,7 +283,7 @@ export default class UserRegister extends Component {
                         this.scroll = ref
                     }}
                     keyboardShouldPersistTaps='handled'
-                    // scrollEnabled={true} 
+                    // scrollEnabled={true}
                     // enableAutomaticScroll={true}
                     enableOnAndroid={true}
                     keyboardDismissMode='interactive'
@@ -425,7 +425,7 @@ export default class UserRegister extends Component {
                         onChangeText={(email) => this.setState({ email: email })}
                     />
 
-                    
+
 
                     <TouchableHighlight
                         style={styles.button}
@@ -460,7 +460,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        justifyContent: 'center', 
+        justifyContent: 'center',
     },
     registerText: {
         alignSelf: 'center',

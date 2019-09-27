@@ -98,7 +98,7 @@ export default class ShuttleMain extends Component {
         this._onChangeToken(token)
     });
 
-    
+
 
   }
 
@@ -107,8 +107,8 @@ export default class ShuttleMain extends Component {
 
     DefaultPreference.get(CommonConf.PREF_KEY_LOGIN_TOKEN).then(function (login_token) {
 
-      if (login_token) { 
-        var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/regiPushToken';
+      if (login_token) {
+        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/regiPushToken';
         fetch(url, {
             method: 'POST',
             headers: {
@@ -121,7 +121,7 @@ export default class ShuttleMain extends Component {
             }),
         }).then(response => response.json()).then(json => {
             console.log(json);
-    
+
             if (json.resCode != 200) {
                 Alert.alert(json.resMsg);
                 // this.setState({
@@ -293,7 +293,7 @@ export default class ShuttleMain extends Component {
   renderItem = item => {
 
     console.log("render item : " + item.index);
-    
+
     const { isLoadingNow, weatherMap, temp, myWeather } = this.state;
 
     let data = weatherMap.get(item.item);

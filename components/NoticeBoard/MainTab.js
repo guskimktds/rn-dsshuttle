@@ -30,7 +30,7 @@ export default class MainTab extends Component {
 
     //data db select
     _boardList() {
-        var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/boardcontents';
+        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/boardcontents';
         console.log('kny_geturl', url);
 
         //data select
@@ -66,10 +66,10 @@ export default class MainTab extends Component {
             <SafeAreaView forceInset={{ bottom: 'never', top: 'never' }}>
                 <KeyboardAwareScrollView keyboardShouldPersistTaps='handled'>
                     <Container style= {styles.container}>
-                        <Content> 
+                        <Content>
                         {
                             //state.feeds배열 map함수로 루프돌며 NoticeComponent의 data에 각 피드 항목 데이터 전달
-                            this.state.feeds.map(feed => <NoticeComponent key={this._keyExtractor} data = {feed} />)  
+                            this.state.feeds.map(feed => <NoticeComponent key={this._keyExtractor} data = {feed} />)
                         }
                         </Content>
                     </Container>

@@ -28,7 +28,7 @@ export default class NoticeComponent extends Component {
           text: '확인',
           onPress: () => this._removeText()
           // if() {
-          //   onPress: () => this._removeText() 
+          //   onPress: () => this._removeText()
           // }
         },
       ],
@@ -45,7 +45,7 @@ export default class NoticeComponent extends Component {
       [
        {
          text: '취소',
-       }, 
+       },
        {
          text: '확인',
          onPress: () => this._removeText()
@@ -56,8 +56,8 @@ export default class NoticeComponent extends Component {
 
   _removeText = () => {
     //const _this = this;
-    //var url = "http://172.20.10.3:8080/api/boardcontents/";
-    var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/deleteAllboardcontents/';
+    //var url = "http://172.20.10.3:8088/api/boardcontents/";
+    var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/deleteAllboardcontents/';
 
     fetch(url, {
       method: 'DELETE',
@@ -102,7 +102,7 @@ export default class NoticeComponent extends Component {
               <CardItem>
                 <Left>
                     {/* 공통 프로필 이미지 */}
-                    <Ionicons name='md-person' size={40}/>  
+                    <Ionicons name='md-person' size={40}/>
                     <Body>
                         <Text>{data.writer}</Text>
                         <Text style = {styles.dateText}>{data.date}</Text>

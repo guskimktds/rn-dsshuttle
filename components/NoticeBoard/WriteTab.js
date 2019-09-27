@@ -29,10 +29,10 @@ export default class WriteTab extends Component {
 
         const { writer, password, content } = this.state;
 
-        var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/boardcontents';
+        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/boardcontents';
         console.log("kny_posturl", url);
 
-        
+
         fetch(url, {
             method: 'POST',
             headers: {
@@ -88,7 +88,7 @@ export default class WriteTab extends Component {
                                             this.scroll = ref
                                          }}>
                     <View style = {styles.container}>
-                    
+
                         <View style={styles.input}>
                             <Text style={styles.font}>이름</Text>
                             <TextInput style={styles.inputText}
@@ -105,7 +105,7 @@ export default class WriteTab extends Component {
                         </View>
                         <View style={styles.input}>
                             <Text style={styles.font}>비밀번호</Text>
-                            <TextInput style={styles.inputText} 
+                            <TextInput style={styles.inputText}
                                     secureTextEntry
                                     numberOfLines={1}
                                     maxLength={10}
@@ -120,7 +120,7 @@ export default class WriteTab extends Component {
                         <View style={styles.body}>
                             <View style={styles.input}>
                                 <Text style={styles.font}>내용</Text>
-                                
+
                                 <View style={styles.saveView}>
                                     <TouchableHighlight onPress={() => this._goAddBtn()} >
                                         <MaterialCommunityIcons style={styles.addBtn} name= 'content-save-edit' size={25}/>
@@ -131,9 +131,9 @@ export default class WriteTab extends Component {
                                 </View>
                             </View>
 
-                            <TextInput style = {styles.bodyText} 
-                                    placeholder='내용을 입력하세요.' 
-                                    autoCorrect={false} 
+                            <TextInput style = {styles.bodyText}
+                                    placeholder='내용을 입력하세요.'
+                                    autoCorrect={false}
                                     multiline numberOfLines={10}
                                     onFocus={(event) => {
                                         // `bind` the function if you're using ES6 classes
@@ -165,9 +165,9 @@ const styles = StyleSheet.create({
     },
 
     inputText: {
-        borderColor: '#aaa', 
-        width: '70%', 
-        height: 30, 
+        borderColor: '#aaa',
+        width: '70%',
+        height: 30,
         borderWidth: 1,
         borderRadius: 5,
         padding: 5,

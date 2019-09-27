@@ -72,13 +72,13 @@ export default class ItemReg extends Component {
 
     _checkUser = () => {
         const {name,phone} = this.state;
-        
+
         if(name == '' || phone == '') {
             Alert.alert("이름과 전화번호를 확인해주세요");
             return;
         }
 
-        var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/checkPushUser/';
+        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/checkPushUser/';
         fetch(url, {
             method: 'POST',
             headers: {
@@ -91,7 +91,7 @@ export default class ItemReg extends Component {
             }),
         }).then(response => response.json()).then(json => {
             console.log(json);
-    
+
             if (json.resCode != 200) {
                 Alert.alert(json.resMsg);
                 // this.setState({
@@ -120,7 +120,7 @@ export default class ItemReg extends Component {
             Alert.alert("수신자의 이름과 전화번호를 먼저 확인해주세요");
             return;
         }
-        var url = 'http://' + CommonConf.urlHost + ':8080/ss/api/register/';
+        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/register/';
         // let token = 'epHnI1L2T18:APA91bGGA7xuyCBgsi0ORjnVRKgH8Sl4nYOB0jmTHaS0NgEYGl_1rThL9Ie9RwGP4GIWabQxACCYSffB9Nu8iVAjekqNWGgEATLhwL_q5kHWYuAIGIck_EI2LVJSryWml4Ig_xL_4sht';
 
         url = url + this.state.toToken;
@@ -180,21 +180,21 @@ export default class ItemReg extends Component {
                         accessibilityLabel="이름 확인"
                         />
                 </View>
-                
+
 
                 <View style={{ backgroundColor: '#dcdcdc', paddingTop: 10, paddingBottom: 0, marginLeft: 15, marginRight: 15, borderRadius: 5 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 10, paddingRight: 10, marginLeft: 10, marginRight: 10 }}>
                         <Text style={{ fontSize: 15, color: '#282828', marginLeft: 10 }}>이름</Text>
-                        <TextInput 
-                        style={{ borderColor: '#aaa', borderWidth: 1, width: '60%', height: 35, borderRadius: 5, padding: 5, backgroundColor: 'white' }} 
+                        <TextInput
+                        style={{ borderColor: '#aaa', borderWidth: 1, width: '60%', height: 35, borderRadius: 5, padding: 5, backgroundColor: 'white' }}
                         onChangeText={(name) => this.setState({ name: name })}
                         editable={!this.state.isChecked}
                         />
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 10, paddingRight: 10, marginLeft: 10, marginRight: 10 }}>
                         <Text style={{ fontSize: 15, color: '#282828', marginLeft: 10 }}>핸드폰 번호</Text>
-                        <TextInput 
-                        style={{ borderColor: '#aaa', borderWidth: 1, width: '60%', height: 35, borderRadius: 5, padding: 5, backgroundColor: 'white' }} 
+                        <TextInput
+                        style={{ borderColor: '#aaa', borderWidth: 1, width: '60%', height: 35, borderRadius: 5, padding: 5, backgroundColor: 'white' }}
                         onChangeText={(phone) => this.setState({ phone: phone })}
                         editable={!this.state.isChecked}
                         />
