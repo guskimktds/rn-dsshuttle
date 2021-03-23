@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View, Dimensions, Image, Animated, Alert, TouchableOpacity, PanResponder, Platform } from 'react-native'
-import SafeAreaView from "react-native-safe-area-view";
+//import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 // import SlidingUpPanel from 'rn-sliding-up-panel'
 import BigShuttleMap from './BigShuttleMap';
 // import Carousel from 'react-native-snap-carousel';
@@ -209,4 +210,3 @@ const styles = {
         padding: 20,
     }
 }
-

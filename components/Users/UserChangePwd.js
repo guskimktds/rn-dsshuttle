@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { StyleSheet, TouchableHighlight, Animated, View, Alert, Text, Dimensions, TextInput } from 'react-native';
 // import { RectButton } from 'react-native-gesture-handler';
-import SafeAreaView from "react-native-safe-area-view";
+//import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 
 import * as Progress from 'react-native-progress';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -59,7 +60,7 @@ export default class UserChangePwd extends Component {
 
         const { loginToken } = this.state;
 
-        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/myInfo';
+        var url = 'https://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/myInfo';
 
         this.setState({
             isLoadingNow: true
@@ -181,7 +182,7 @@ export default class UserChangePwd extends Component {
         let isValid = this._checkValidInputValues(originPw, pw, pw2);
 
         if(isValid) {
-            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/changePwd';
+            var url = 'https://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/changePwd';
 
             this.setState({
                 isLoadingNow: true

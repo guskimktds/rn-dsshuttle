@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, FlatList, Alert, Platform, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types'
-import SafeAreaView from "react-native-safe-area-view";
+//import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 import CardView from 'react-native-cardview';
 import SlidingUpPanel from 'rn-sliding-up-panel'
 import moment from 'moment-timezone';
@@ -124,7 +125,7 @@ export default class SmallShuttleMain extends Component {
 
     //운반물품 등록 dy
     _goItemReg = (data,location) => {
-        this.props.navigation.navigate('ItemReg', {data:data,location:location}) 
+        this.props.navigation.navigate('ItemReg', {data:data,location:location})
     }
 
     //운반물품 조회 dy
@@ -385,7 +386,7 @@ export default class SmallShuttleMain extends Component {
     _renderItem = (item, index, isTab2) => {
 
         const isPassed = this._isPassedTime(index);
-        let color = '#fff';  
+        let color = '#fff';
         if (isPassed) {
             color = '#bbb'
         }
@@ -483,7 +484,7 @@ export default class SmallShuttleMain extends Component {
                     minimumVelocityThreshold={0.01}
                     friction={0.5}
                     ref={c => (this._panel = c)}
-                    // onDragEnd={(value) => this._setVisible(value)}   
+                    // onDragEnd={(value) => this._setVisible(value)}
                     // style={{ position: 'relative' }}
                     draggableRange={this.props.draggableRange}
                 >

@@ -2,25 +2,25 @@ import React, { Component } from 'react';
 import { Animated, View, Dimensions } from 'react-native';
 import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-//import BigShuttleMapBase from './components/BigShuttle/BigShuttleMapBase';
-//import ShuttleTab from './components/Main/ShuttleTab';
+import BigShuttleMapBase from './components/BigShuttle/BigShuttleMapBase';
+import ShuttleTab from './components/Main/ShuttleTab';
 import ShuttleMain from './components/Main/ShuttleMain';
 import BigShuttleMain from './components/BigShuttle/BigShuttleMain';
 import UserMain from './components/Users/UserMain';
 import UserRegister from './components/Users/UserRegister';
-//import UserResetPwd from './components/Users/UserResetPwd';
+import UserResetPwd from './components/Users/UserResetPwd';
 
-// import DriverInfo from './components/DriversInfo/DriverInfo';//dy
-// import ItemReg from './components/SendStuff/ItemReg';//dy
-// import ItemList from './components/SendStuff/ItemList';//dy
-// import ItemDtlList from './components/SendStuff/ItemDtlList';//dy
-// import NoticeBoard from './components/NoticeBoard/NoticeBoard'; // ny: 게시판
-//
-// import SmallShuttleMain from './components/SmallShuttle/SmallShuttleMain';
-// import SettingMain from './components/Setting/SettingMain';
-// import SettingSub from './components/Setting/SettingSub';
-// import UserChangePwd from './components/Users/UserChangePwd';
-// import firebase  from './components/Push/Firebase';
+import DriverInfo from './components/DriversInfo/DriverInfo';//dy
+import ItemReg from './components/SendStuff/ItemReg';//dy
+import ItemList from './components/SendStuff/ItemList';//dy
+import ItemDtlList from './components/SendStuff/ItemDtlList';//dy
+import NoticeBoard from './components/NoticeBoard/NoticeBoard'; // ny: 게시판
+
+import SmallShuttleMain from './components/SmallShuttle/SmallShuttleMain';
+import SettingMain from './components/Setting/SettingMain';
+import SettingSub from './components/Setting/SettingSub';
+import UserChangePwd from './components/Users/UserChangePwd';
+import firebase  from './components/Push/Firebase';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -30,21 +30,21 @@ const mainStack = createStackNavigator(
   {
     Main: ShuttleMain,
     BigShuttleMain: BigShuttleMain,
-    // BigShuttleMapBase: BigShuttleMapBase,
-    // DriverInfo: DriverInfo, //dy
-    // ItemReg: ItemReg,//dy
-    // SmallShuttleMain: SmallShuttleMain,
-    // ShuttleTab: ShuttleTab,
-    // SettingMain: SettingMain,
-    // SettingSub: SettingSub,
-    // UserChangePwd:UserChangePwd,
-    // NoticeBoard : NoticeBoard, // ny:게시판
-    // ItemList: ItemList,//dy
-    // ItemDtlList : ItemDtlList//dy
+    BigShuttleMapBase: BigShuttleMapBase,
+    DriverInfo: DriverInfo, //dy
+    ItemReg: ItemReg,//dy
+    SmallShuttleMain: SmallShuttleMain,
+    ShuttleTab: ShuttleTab,
+    SettingMain: SettingMain,
+    SettingSub: SettingSub,
+    UserChangePwd:UserChangePwd,
+    NoticeBoard : NoticeBoard, // ny:게시판
+    ItemList: ItemList,//dy
+    ItemDtlList : ItemDtlList//dy
   }, {
     initialRouteName: 'Main',
 
-    // 화면전환 애니메이션
+    // 화면전환 애니메이션 
     transitionConfig: () => ({
       screenInterpolator: sceneProps => {
         const { layout, position, scene } = sceneProps;
@@ -54,7 +54,7 @@ const mainStack = createStackNavigator(
           inputRange: [index - 1, index, index + 1],
           outputRange: [layout.initWidth, 0, 0]
         });
-
+        
         const opacity = position.interpolate({
           inputRange: [
             index - 1,
@@ -88,7 +88,7 @@ const userStack = createStackNavigator(
   {
     UserMain: UserMain,
     UserRegister: UserRegister,
-    //UserResetPwd: UserResetPwd
+    UserResetPwd: UserResetPwd
   }, {
     initialRouteName: 'UserMain',
     /* 네비게이션 헤더 옵션 */
@@ -137,7 +137,6 @@ const value = width - 50;
 export default class App extends React.Component {
 
   constructor(props) {
-    console.log("constructor");
     super(props);
     this.animatedValue = new Animated.Value(0);
 
@@ -161,23 +160,23 @@ export default class App extends React.Component {
   };
 
 
-  // async _listenForNotifications(){
-  //   // onNotificationDisplayed - ios only
-  //
-  //   this.notificationListener = firebase.notifications().onNotification((notification) => {
-  //     console.log('onNotification', notification);
-  //   });
-  //
-  //   this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
-  //       console.log('onNotificationOpened', notificationOpen);
-  //   });
-  //
-  //   const notificationOpen = await firebase.notifications().getInitialNotification();
-  //   if (notificationOpen) {
-  //       console.log('getInitialNotification', notificationOpen);
-  //   }
-  // }
+  async _listenForNotifications(){
+    // onNotificationDisplayed - ios only
 
+    this.notificationListener = firebase.notifications().onNotification((notification) => {
+      console.log('onNotification', notification);
+    });
+
+    this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
+        console.log('onNotificationOpened', notificationOpen);
+    });
+
+    const notificationOpen = await firebase.notifications().getInitialNotification();
+    if (notificationOpen) {
+        console.log('getInitialNotification', notificationOpen);
+    }
+  }
+  
   componentDidMount() {
     Animated.timing(this.animatedValue, {
       toValue: 1,

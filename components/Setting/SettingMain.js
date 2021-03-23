@@ -59,7 +59,7 @@ export default class SettingMain extends React.Component {
         _this.setState({
           isLoadingNow: true
         })
-        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/withraw';
+        var url = 'https://' + CommonConf.urlHost + ':8088/ss/api/withraw';
         fetch(url, {
           method: 'DELETE',
           headers: {
@@ -121,7 +121,7 @@ export default class SettingMain extends React.Component {
         _this.setState({
           isLoadingNow: true
         })
-        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/logout';
+        var url = 'https://' + CommonConf.urlHost + ':8088/ss/api/logout';
         fetch(url, {
           method: 'POST',
           headers: {

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+httpsimport React, { Component } from "react";
 import {
   StyleSheet,
   TouchableOpacity,
@@ -17,7 +17,9 @@ import moment from "moment-timezone";
 import "moment/locale/ko";
 
 // import { RectButton } from 'react-native-gesture-handler';
-import SafeAreaView from "react-native-safe-area-view";
+//import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
+
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import CardView from "react-native-cardview";
 
@@ -108,7 +110,7 @@ export default class ShuttleMain extends Component {
     DefaultPreference.get(CommonConf.PREF_KEY_LOGIN_TOKEN).then(function (login_token) {
 
       if (login_token) {
-        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/regiPushToken';
+        var url = 'http://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/regiPushToken';
         fetch(url, {
             method: 'POST',
             headers: {
@@ -171,7 +173,7 @@ export default class ShuttleMain extends Component {
   // 날씨 정보 가져오는 API 기본 1분에 60회 가능... 고도화 필요
   _getWeather = (lat, lon) => {
     var url =
-      "http://api.openweathermap.org/data/2.5/weather?lat=" +
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
       lat +
       "&lon=" +
       lon +
@@ -189,7 +191,7 @@ export default class ShuttleMain extends Component {
           temp: json.main.temp,
           myWeather: json.weather[0].main,
           icon:
-            "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png",
+            "https://openweathermap.org/img/w/" + json.weather[0].icon + ".png",
           isLoadingNow: false
         });
       });
@@ -197,7 +199,7 @@ export default class ShuttleMain extends Component {
 
   _getFiveDayWeather = (lat, lon) => {
     var url =
-      "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+      "https://api.openweathermap.org/data/2.5/forecast?lat=" +
       lat +
       "&lon=" +
       lon +
@@ -350,6 +352,7 @@ export default class ShuttleMain extends Component {
   }
 
   render() {
+    console.log("ShuttleMain.js");
     const {
       temp,
       myWeather,

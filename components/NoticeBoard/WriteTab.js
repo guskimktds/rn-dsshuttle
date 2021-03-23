@@ -5,7 +5,8 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
 import { TextInput } from 'react-native-gesture-handler';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import SafeAreaView from "react-native-safe-area-view";
+//import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 import CommonConf from '../Datas/CommonConf'
 
 export default class WriteTab extends Component {
@@ -29,7 +30,7 @@ export default class WriteTab extends Component {
 
         const { writer, password, content } = this.state;
 
-        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/boardcontents';
+        var url = 'https://' + CommonConf.urlHost + ':8088/ss/api/boardcontents';
         console.log("kny_posturl", url);
 
 

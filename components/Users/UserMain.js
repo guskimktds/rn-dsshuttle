@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { StyleSheet, TouchableHighlight, View, Alert, Text, Dimensions, TextInput } from 'react-native';
 // import { RectButton } from 'react-native-gesture-handler';
-import SafeAreaView from "react-native-safe-area-view";
+//import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 // import ProgressLoader from 'rn-progress-loader';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import * as Progress from 'react-native-progress';
@@ -99,7 +100,7 @@ export default class UserMain extends Component {
             isLoadingNow: true
         })
 
-        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/loginWithToken';
+        var url = 'https://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/loginWithToken';
 
         fetch(url, {
             method: 'POST',
@@ -163,7 +164,8 @@ export default class UserMain extends Component {
                 isLoadingNow: true
             })
 
-            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/login';
+            //var url = 'https://' + CommonConf.urlHost + ':8088/ss/api/login';
+            var url = 'https://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/login';
 
             fetch(url, {
                 method: 'POST',

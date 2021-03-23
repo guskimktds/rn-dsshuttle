@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { StyleSheet, ScrollView, TouchableHighlight, Animated, View, Alert, Text, Dimensions, TextInput } from 'react-native';
 // import { RectButton } from 'react-native-gesture-handler';
-import SafeAreaView from "react-native-safe-area-view";
+// import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 
 import * as Progress from 'react-native-progress';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -50,7 +51,7 @@ export default class UserRegister extends Component {
         const { id } = this.state;
 
         if (id) {
-            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/checkUserDupl';
+            var url = 'https://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/checkUserDupl';
             this.setState({
                 isLoadingNow: true
             })
@@ -200,7 +201,7 @@ export default class UserRegister extends Component {
         let isValid = this._checkValidInputValues(id, pw, pw2, email, phone,name, isNotDuplId);
 
         if (isValid) {
-            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/regiUser';
+            var url = 'https://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/regiUser';
 
             this.setState({
                 isLoadingNow: true

@@ -7,7 +7,8 @@ import NoticeComponent from './NoticeComponent';
 
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import SafeAreaView from "react-native-safe-area-view";
+//import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 import CommonConf from '../Datas/CommonConf'
 
 export default class MainTab extends Component {
@@ -30,7 +31,7 @@ export default class MainTab extends Component {
 
     //data db select
     _boardList() {
-        var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/boardcontents';
+        var url = 'https://' + CommonConf.urlHost + ':8088/ss/api/boardcontents';
         console.log('kny_geturl', url);
 
         //data select

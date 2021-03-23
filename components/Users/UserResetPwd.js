@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { StyleSheet, TouchableHighlight, Animated, View, Alert, Text, Dimensions, TextInput } from 'react-native';
 // import { RectButton } from 'react-native-gesture-handler';
-import SafeAreaView from "react-native-safe-area-view";
+// import SafeAreaView from "react-native-safe-area-view";
+import { SafeAreaView } from "react-native";
 
 import * as Progress from 'react-native-progress';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -96,7 +97,7 @@ export default class UserResetPwd extends Component {
         let isValid = this._checkValidInputValues(id, email);
 
         if (isValid) {
-            var url = 'http://' + CommonConf.urlHost + ':8088/ss/api/resetPwd';
+            var url = 'https://' + CommonConf.urlHost + ':'+CommonConf.port+'/ss/api/resetPwd';
 
             this.setState({
                 isLoadingNow: true

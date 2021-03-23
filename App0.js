@@ -5,11 +5,11 @@ import { createStackNavigator, createAppContainer, createSwitchNavigator } from 
 //import BigShuttleMapBase from './components/BigShuttle/BigShuttleMapBase';
 //import ShuttleTab from './components/Main/ShuttleTab';
 import ShuttleMain from './components/Main/ShuttleMain';
-import BigShuttleMain from './components/BigShuttle/BigShuttleMain';
-import UserMain from './components/Users/UserMain';
-import UserRegister from './components/Users/UserRegister';
-//import UserResetPwd from './components/Users/UserResetPwd';
-
+// import BigShuttleMain from './components/BigShuttle/BigShuttleMain';
+// import UserMain from './components/Users/UserMain';
+// import UserRegister from './components/Users/UserRegister';
+// import UserResetPwd from './components/Users/UserResetPwd';
+//
 // import DriverInfo from './components/DriversInfo/DriverInfo';//dy
 // import ItemReg from './components/SendStuff/ItemReg';//dy
 // import ItemList from './components/SendStuff/ItemList';//dy
@@ -28,8 +28,8 @@ const height = Dimensions.get('window').height;
 
 const mainStack = createStackNavigator(
   {
-    Main: ShuttleMain,
-    BigShuttleMain: BigShuttleMain,
+    Main: ShuttleMain
+    // BigShuttleMain: BigShuttleMain,
     // BigShuttleMapBase: BigShuttleMapBase,
     // DriverInfo: DriverInfo, //dy
     // ItemReg: ItemReg,//dy
@@ -42,76 +42,35 @@ const mainStack = createStackNavigator(
     // ItemList: ItemList,//dy
     // ItemDtlList : ItemDtlList//dy
   }, {
-    initialRouteName: 'Main',
+    initialRouteName: 'Main'
 
     // 화면전환 애니메이션
-    transitionConfig: () => ({
-      screenInterpolator: sceneProps => {
-        const { layout, position, scene } = sceneProps;
-        const { index } = scene;
-
-        const translateX = position.interpolate({
-          inputRange: [index - 1, index, index + 1],
-          outputRange: [layout.initWidth, 0, 0]
-        });
-
-        const opacity = position.interpolate({
-          inputRange: [
-            index - 1,
-            index - 0.99,
-            index,
-            index + 0.99,
-            index + 1
-          ],
-          outputRange: [0, 1, 1, 0.3, 0]
-        });
-
-        return { opacity, transform: [{ translateX }] };
-      }
-    }),
+    // transitionConfig: () => ({
+    //   screenInterpolator: sceneProps => {
+    //     const { layout, position, scene } = sceneProps;
+    //     const { index } = scene;
+    //
+    //     const translateX = position.interpolate({
+    //       inputRange: [index - 1, index, index + 1],
+    //       outputRange: [layout.initWidth, 0, 0]
+    //     });
+    //
+    //     const opacity = position.interpolate({
+    //       inputRange: [
+    //         index - 1,
+    //         index - 0.99,
+    //         index,
+    //         index + 0.99,
+    //         index + 1
+    //       ],
+    //       outputRange: [0, 1, 1, 0.3, 0]
+    //     });
+    //
+    //     return { opacity, transform: [{ translateX }] };
+    //   }
+    // }),
 
     /* 네비게이션 헤더 옵션 */
-    defaultNavigationOptions: {
-      headerStyle: {
-        display: "none",
-        backgroundColor: '#4baec5',
-      },
-      // headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        color: '#fff'
-      },
-    },
-  });
-
-const userStack = createStackNavigator(
-  {
-    UserMain: UserMain,
-    UserRegister: UserRegister,
-    //UserResetPwd: UserResetPwd
-  }, {
-    initialRouteName: 'UserMain',
-    /* 네비게이션 헤더 옵션 */
-    defaultNavigationOptions: {
-      headerStyle: {
-        display: "none",
-        backgroundColor: '#4baec5',
-      },
-      // headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        color: '#fff'
-      },
-    },
-  });
-
-const RootStack = createSwitchNavigator(
-  {
-    Auth: userStack,
-    App: mainStack
-  },
-  {
-    initialRouteName: 'Auth',
     // defaultNavigationOptions: {
     //   headerStyle: {
     //     display: "none",
@@ -123,7 +82,49 @@ const RootStack = createSwitchNavigator(
     //     color: '#fff'
     //   },
     // },
+  });
+
+// const userStack = createStackNavigator(
+//   {
+//     UserMain: UserMain,
+//     UserRegister: UserRegister,
+//     UserResetPwd: UserResetPwd
+//   }, {
+//     initialRouteName: 'UserMain',
+//     /* 네비게이션 헤더 옵션 */
+//     defaultNavigationOptions: {
+//       headerStyle: {
+//         display: "none",
+//         backgroundColor: '#4baec5',
+//       },
+//       // headerTintColor: '#fff',
+//       headerTitleStyle: {
+//         fontWeight: 'bold',
+//         color: '#fff'
+//       },
+//     },
+//   });
+
+const RootStack = createSwitchNavigator(
+  {
+    //Auth: userStack,
+    App: mainStack
   }
+  // ,
+  // {
+  //   //initialRouteName: 'Auth',
+  //   // defaultNavigationOptions: {
+  //   //   headerStyle: {
+  //   //     display: "none",
+  //   //     backgroundColor: '#4baec5',
+  //   //   },
+  //   //   // headerTintColor: '#fff',
+  //   //   headerTitleStyle: {
+  //   //     fontWeight: 'bold',
+  //   //     color: '#fff'
+  //   //   },
+  //   // },
+  // }
 );
 
 // const store = createStore(reducers);
@@ -137,7 +138,6 @@ const value = width - 50;
 export default class App extends React.Component {
 
   constructor(props) {
-    console.log("constructor");
     super(props);
     this.animatedValue = new Animated.Value(0);
 

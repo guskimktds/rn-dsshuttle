@@ -65,8 +65,8 @@ export default class ItemDtlList extends Component {
     _onReceiveClicked = () => {
       //  Alert.alert("발신자에게 수신완료 Push 알림이 발송되었습니다.");
         
-        var url = 'http://172.20.10.6:3000/receive/';  //다영 wifi
-        //var url = 'http://192.168.43.20:3000/';  //단말 wifi
+        var url = 'https://172.20.10.6:3000/receive/';  //다영 wifi
+        //var url = 'https://192.168.43.20:3000/';  //단말 wifi
 
         let token = 'cEi40TSrPnw:APA91bGJAL5HGcYFzRtOc_GI4RoPJNlPM5UFZoQW0XpxiEy0_YipVl8-4iNunYEEuv8g_B1zktUeXzjhJRo1qkKc5Q0Qqd7abPNR0bPq8nKlR5SCyz1WdK1nTYmYX3dUGEHyJPQkSqRr';
 
